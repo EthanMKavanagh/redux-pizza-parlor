@@ -7,8 +7,8 @@ class PizzaForm extends Component {
 
     state = {
         newAddress: {
-            name: '',
-            streetAddress: '',
+            customer_name: '',
+            street_address: '',
             city: '',
             zip: '',
             type: '',
@@ -30,6 +30,7 @@ class PizzaForm extends Component {
     }
 
     handleSubmit = (event) => {
+        console.log('this.state.newAddress:', this.state.newAddress);
         axios({
             method: 'POST',
             url: '/api/order',
@@ -55,12 +56,12 @@ class PizzaForm extends Component {
                     <input required
                         type='text'
                         placeholder='Name'
-                        onChange={(event) => this.handleChangeFor('name', event)}
+                        onChange={(event) => this.handleChangeFor('customer_name', event)}
                     />
                     <input required
                         type='text'
                         placeholder='Street Address'
-                        onChange={(event) => this.handleChangeFor('streetAddress', event)}
+                        onChange={(event) => this.handleChangeFor('street_address', event)}
                     />
                     <input required
                         type='text'
