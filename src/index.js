@@ -6,6 +6,14 @@ import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import addressFormReducer from './reducers/addressForm';
 
+// const adminReducer = (state = [], action) => {
+//     if (action.type === "GET_ORDERS") {
+//         let newOrdersList = action.payload;
+//         return newOrdersList;
+//     }
+//     return state
+// }
+
 const store = createStore(
     combineReducers({
         //homeScreen: homeScreenReducer,
@@ -14,6 +22,7 @@ const store = createStore(
         //admin: adminReducer
     })
 );
+
 
 ReactDOM.render(
     <Provider store={store}>
