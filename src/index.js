@@ -4,18 +4,19 @@ import './index.css';
 import App from './components/App/App';
 import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
+import addressFormReducer from './reducers/addressForm';
 
 const store = createStore(
     combineReducers({
-        homeScreen: homeScreenReducer,
+        //homeScreen: homeScreenReducer,
         addressForm: addressFormReducer,
-        checkout: checkoutReducer,
-        admin: adminReducer
+        //checkout: checkoutReducer,
+        //admin: adminReducer
     })
 );
 
 ReactDOM.render(
-    <Provider>
+    <Provider store={store}>
         <App />
     </Provider>,
      document.getElementById('root')
