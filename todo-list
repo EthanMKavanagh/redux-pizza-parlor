@@ -1,0 +1,29 @@
+TODO:
+    Admin:
+        - [ ] localhost:3000/admin
+            - Not accessible unless at this URL
+        - [ ] Displays all orders
+            - [ ] Uses table 'pizza'
+
+    Pizza Display (Page 1):
+        - [ ] Add pizza to cart
+            - [ ] POST to 'orders' table 
+            - [ ] display on cart
+        - [ ] Remove pizza from cart
+            - [ ] DELETE
+            - [ ] Delete button 'onClick={this.onDelete}'
+            - [ ] Update DOM on delete (call GET)
+        - [ ] Redirects to Address Form
+        - [ ] Components:
+            - [ ] PizzaList (using .map())
+            - [ ] PizzaItem
+
+    Address (Page 2):
+        - [ ] Input field
+            - [ ] Name, Street Address, City, Zip
+            - [ ] Radio buttons for Delivery / Pickup
+
+    Checkout (Page 3):
+        - [ ] Display all pizzas
+            - [ ] GET
+            - [ ] render of all pizzas
