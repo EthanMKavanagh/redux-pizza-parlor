@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom';
 
 class PizzaForm extends Component {
 
@@ -9,11 +10,13 @@ class PizzaForm extends Component {
             name: '',
             streetAddress: '',
             city: '',
-            zip: ''
+            zip: '',
+            type: ''
         }
     }
 
     handleChangeFor = (propertyName, event) => {
+        console.log([propertyName], 'is:', event.target.value);
         this.setState({
             newAddress: {
                 ...this.state.newAddress,
@@ -22,13 +25,19 @@ class PizzaForm extends Component {
         });
     }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
         axios({
             method: 'POST',
             url: '/api/order',
             data: this.state.newAddress
         }).then(response => {
             console.log('POST newAddress:', response);
+            this.props.history.push('/checkout');
+
+            this.props.dispatch({
+                type: 'SET_ADDRESS',
+                payload: event.target.value
+            });
         }).catch(err => {
             console.error('POST newAddress error:', err);
         });
@@ -59,12 +68,12 @@ class PizzaForm extends Component {
                         placeholder='Zip'
                         onChange={(event) => this.handleChangeFor('zip', event)}
                     />
-                    <input
-                        type="radio" name='choice' value='Pickup'
-                    />
-                    <input
-                        type='radio' name='choice' value='Delivery'
-                    />
+                    <input type="radio" name='choice' value='Pickup'
+                        onChange={(event) => this.handleChangeFor('type', event)}
+                    />Pickup
+                    <input type='radio' name='choice' value='Delivery'
+                        onChange={(event) => this.handleChangeFor('type', event)}
+                    />Delivery
                     <button type='submit'>Next</button>
                 </form>
             </section>
@@ -72,4 +81,4 @@ class PizzaForm extends Component {
     }
 }
 
-export default connect()(PizzaForm);
+export default connect()(withRouter(PizzaForm));
