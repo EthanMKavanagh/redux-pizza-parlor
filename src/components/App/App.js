@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.css";
 import { connect } from "react-redux";
 import { Route, Link, HashRouter as Router } from "react-router-dom";
-import PizzaForm from "../PizzaForm/PizzaForm";
+import AddressForm from "../AddressForm/AddressForm";
 
 class App extends Component {
 	state = {
@@ -54,7 +54,10 @@ class App extends Component {
 					))}
 				</ul>
 				<img src='images/pizza_photo.png' />
-				<p>Pizza is great.</p>
+          
+        <Route path='/address-form' exact>
+          <AddressForm />
+        </Route>
 			</div>
 		);
 	}
