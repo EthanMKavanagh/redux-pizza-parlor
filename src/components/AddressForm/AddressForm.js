@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom';
 
 class PizzaForm extends Component {
 
@@ -9,7 +10,8 @@ class PizzaForm extends Component {
             name: '',
             streetAddress: '',
             city: '',
-            zip: ''
+            zip: '',
+            type: ''
         }
     }
 
@@ -30,6 +32,7 @@ class PizzaForm extends Component {
             data: this.state.newAddress
         }).then(response => {
             console.log('POST newAddress:', response);
+            this.props.history.push('/checkout');
 
             this.props.dispatch({
                 type: 'SET_ADDRESS',
@@ -65,8 +68,12 @@ class PizzaForm extends Component {
                         placeholder='Zip'
                         onChange={(event) => this.handleChangeFor('zip', event)}
                     />
-                    <input type="radio" name='choice' value='Pickup'/>Pickup
-                    <input type='radio' name='choice' value='Delivery'/>Delivery
+                    <input type="radio" name='choice' value='Pickup'
+                        onChange={(event) => this.handleChangeFor('type', event)}
+                    />Pickup
+                    <input type='radio' name='choice' value='Delivery'
+                        onChange={(event) => this.handleChangeFor('type', event)}
+                    />Delivery
                     <button type='submit'>Next</button>
                 </form>
             </section>
@@ -74,4 +81,4 @@ class PizzaForm extends Component {
     }
 }
 
-export default connect()(PizzaForm);
+export default connect()(withRouter(PizzaForm));
