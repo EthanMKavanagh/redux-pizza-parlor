@@ -14,6 +14,7 @@ class PizzaForm extends Component {
     }
 
     handleChangeFor = (propertyName, event) => {
+        console.log([propertyName], 'is:', event.target.value);
         this.setState({
             newAddress: {
                 ...this.state.newAddress,
@@ -22,13 +23,18 @@ class PizzaForm extends Component {
         });
     }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
         axios({
             method: 'POST',
             url: '/api/order',
             data: this.state.newAddress
         }).then(response => {
             console.log('POST newAddress:', response);
+
+            this.props.dispatch({
+                type: 'SET_ADDRESS',
+                payload: event.target.value
+            });
         }).catch(err => {
             console.error('POST newAddress error:', err);
         });
@@ -59,12 +65,8 @@ class PizzaForm extends Component {
                         placeholder='Zip'
                         onChange={(event) => this.handleChangeFor('zip', event)}
                     />
-                    <input
-                        type="radio" name='choice' value='Pickup'
-                    />
-                    <input
-                        type='radio' name='choice' value='Delivery'
-                    />
+                    <input type="radio" name='choice' value='Pickup'/>Pickup
+                    <input type='radio' name='choice' value='Delivery'/>Delivery
                     <button type='submit'>Next</button>
                 </form>
             </section>
