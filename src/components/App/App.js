@@ -1,29 +1,63 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import {Route, Link, HashRouter as Router} from 'react-router-dom';
-import './App.css';
-import AddressForm from '../AddressForm/AddressForm';
-import Admin from '../Admin/Admin'
+import React, { Component } from "react";
+import axios from "axios";
+import "./App.css";
+import { connect } from "react-redux";
+import { Route, Link, HashRouter as Router } from "react-router-dom";
+import PizzaForm from "../PizzaForm/PizzaForm";
 
 class App extends Component {
-  render() {
-    return (
-      <Router>
-      <div className="App">
-        <Route path="/admin">
-          <Admin />
-        </Route>
-        <header className="App-header">
-          <h1 className="App-title">Prime Pizza</h1>
-        </header>
-        <br/>
-        <Route path='/address-form' exact>
-          <AddressForm />
-        </Route>
-      </div>
-      </Router>
-    );
-  }
+	state = {
+		pizzaList: [],
+	};
+	componentDidMount() {
+		this.getPizzas();
+	}
+	getPizzas = () => {
+		axios({
+			method: "GET",
+			url: "/api/pizza",
+		})
+			.then((response) => {
+				console.log(response);
+				this.props.dispatch({
+					type: "SET_PIZZAS",
+					//same as results.rows from server
+					payload: response.data,
+				});
+				this.setState({
+					pizzaList: response.data,
+				});
+				console.log(this.state.pizzaList);
+				console.log(response);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+	render() {
+		return (
+			<div className='App'>
+				<header className='App-header'>
+					<h1 className='App-title'>Prime Pizza</h1>
+				</header>
+				<br />
+				<ul>
+					{this.state.pizzaList.map((pizza, index) => (
+						<div>
+							<li key={index}>
+								{pizza.name}
+								{pizza.description}
+								{pizza.price}
+								<button>Add Me</button>
+							</li>
+						</div>
+					))}
+				</ul>
+				<img src='images/pizza_photo.png' />
+				<p>Pizza is great.</p>
+			</div>
+		);
+	}
 }
 
-export default App;
+export default connect()(App);
