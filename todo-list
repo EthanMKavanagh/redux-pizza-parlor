@@ -1,4 +1,9 @@
 TODO:
+    SetUp:
+        - [x] Create Database called 'pizza_parlor'
+            - [x] Add tables from .sql field
+        - [x] npm install
+        - [x] npm run server / npm run client
     Admin:
         - [ ] localhost:3000/admin
             - Not accessible unless at this URL
