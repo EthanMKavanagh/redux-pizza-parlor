@@ -5,10 +5,9 @@ TODO:
         - [x] npm install
         - [x] npm run server / npm run client
     Admin:
-        - [ ] localhost:3000/admin
+        - [X] localhost:3000/admin
             - Not accessible unless at this URL
-        - [ ] Displays all orders
-            - [ ] Uses table 'pizza'
+        - [X] Displays all orders
 
     Pizza Display (Page 1):
         - [ ] Add pizza to cart
