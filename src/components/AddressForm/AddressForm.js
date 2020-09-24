@@ -1,7 +1,39 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import axios from 'axios';
 
 class PizzaForm extends Component {
+
+    state = {
+        newAddress: {
+            name: '',
+            streetAddress: '',
+            city: '',
+            zip: ''
+        }
+    }
+
+    handleChangeFor = (propertyName, event) => {
+        this.setState({
+            newAddress: {
+                ...this.state.newAddress,
+                [propertyName]: event.target.value
+            }
+        });
+    }
+
+    handleSubmit = () => {
+        axios({
+            method: 'POST',
+            url: '/api/order',
+            data: this.state.newAddress
+        }).then(response => {
+            console.log('POST newAddress:', response);
+        }).catch(err => {
+            console.error('POST newAddress error:', err);
+        });
+    }
+
     render() {
         return (
             <section>
@@ -27,9 +59,13 @@ class PizzaForm extends Component {
                         placeholder='Zip'
                         onChange={(event) => this.handleChangeFor('zip', event)}
                     />
-                    <button type='submit'>
-                        Next
-                    </button>
+                    <input
+                        type="radio" name='choice' value='Pickup'
+                    />
+                    <input
+                        type='radio' name='choice' value='Delivery'
+                    />
+                    <button type='submit'>Next</button>
                 </form>
             </section>
         );

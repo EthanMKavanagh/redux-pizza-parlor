@@ -4,6 +4,7 @@ import './index.css';
 import App from './components/App/App';
 import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
+import addressFormReducer from './reducers/addressForm';
 
 const store = createStore(
     combineReducers({
