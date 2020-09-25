@@ -61,6 +61,10 @@ class App extends Component {
 					<Route path='/address-form' exact>
 						<AddressForm />
 					</Route>
+
+					<Route path='/admin' exact>
+						<adminPanel />
+					</Route>
 				</div>
 			</Router>
 		);
