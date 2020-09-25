@@ -28,6 +28,7 @@ class PizzaForm extends Component {
     }
 
     handleSubmit = (event) => {
+        event.preventDefault();
         console.log('this.state.newAddress:', this.state.newAddress);
         axios({
             method: 'POST',
