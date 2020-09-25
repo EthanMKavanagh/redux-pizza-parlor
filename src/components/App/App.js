@@ -36,31 +36,37 @@ class App extends Component {
 	};
 	render() {
 		return (
-      <Router>
-			<div className='App'>
-				<header className='App-header'>
-					<h1 className='App-title'>Prime Pizza</h1>
-				</header>
-				<br />
-				<ul>
-					{this.state.pizzaList.map((pizza, index) => (
-						<div>
-							<li key={index}>
-								{pizza.name}
-								{pizza.description}
-								{pizza.price}
-								<button>Add Me</button>
-							</li>
-						</div>
-					))}
-				</ul>
-				<img src='images/pizza_photo.png' />
+			<Router>
+				<div className='App'>
+					<header className='App-header'>
+						<h1 className='App-title'>Prime Pizza</h1>
+					</header>
+					<br />
+					<Route path='/' exact>
+						<ul>
+							{this.state.pizzaList.map((pizza, index) => (
+								<div>
+									<li key={index}>
+										{pizza.name}
+										{pizza.description}
+										{pizza.price}
+										<button>Add Me</button>
+									</li>
+								</div>
+							))}
+						</ul>
+						<img src='images/pizza_photo.png' />
+					</Route>
 
-				{/* <Route path='/address-form' exact>
-					<AddressForm />
-				</Route> */}
-			</div>
-      </Router>
+					<Route path='/address-form' exact>
+						<AddressForm />
+					</Route>
+
+					<Route path='/admin' exact>
+						<adminPanel />
+					</Route>
+				</div>
+			</Router>
 		);
 	}
 }
