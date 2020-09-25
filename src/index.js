@@ -12,7 +12,7 @@ const homeScreenReducer = (state = [], action) => {
 		//action.payload = result.rows/ response.data
 		return action.payload;
 		//return action.payload;
-	} else if (action.type === "SEND_PIZZAS") {
+	} else if (action.type === "SEND_PIZZA") {
 		//can return just action.payload- don't have to assign a var
 		//action.payload = result.rows/ response.data
 		console.log(action.payload);

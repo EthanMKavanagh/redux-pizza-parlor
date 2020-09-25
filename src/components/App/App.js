@@ -39,7 +39,7 @@ class App extends Component {
 		console.log("you added this pizza");
 		console.log(pizzaToAdd);
 		this.props.dispatch({
-			type: "SEND_PIZZAS",
+			type: "SEND_PIZZA",
 			payload: pizzaToAdd,
 		});
 	};
