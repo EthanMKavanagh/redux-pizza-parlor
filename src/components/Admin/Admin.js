@@ -43,4 +43,4 @@ class adminPanel extends Component {
     }
 }
 
-export default adminPanel;
+export default connect()(adminPanel);
