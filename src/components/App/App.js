@@ -4,6 +4,8 @@ import "./App.css";
 import { connect } from "react-redux";
 import { Route, Link, HashRouter as Router } from "react-router-dom";
 import AddressForm from "../AddressForm/AddressForm";
+import Checkout from '../Checkout/Checkout'
+import Admin from '../Admin/Admin'
 
 class App extends Component {
 	state = {
@@ -31,7 +33,7 @@ class App extends Component {
 				console.log(response);
 			})
 			.catch((err) => {
-				console.log(err);
+				console.err(err);
 			});
 	};
 	render() {
@@ -63,7 +65,11 @@ class App extends Component {
 					</Route>
 
 					<Route path='/admin' exact>
-						<adminPanel />
+						<Admin />
+					</Route>
+
+					<Route path='/checkout' exact>
+						<Checkout />
 					</Route>
 				</div>
 			</Router>

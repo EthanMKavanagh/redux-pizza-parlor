@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./components/App/App";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
+import addressFormReducer from './reducers/addressForm'
 
 const homeScreenReducer = (state = [], action) => {
 	// TODO - set book list with data from server
@@ -19,7 +20,7 @@ const homeScreenReducer = (state = [], action) => {
 const store = createStore(
 	combineReducers({
 		homeScreen: homeScreenReducer,
-		// addressForm: addressFormReducer,
+		addressForm: addressFormReducer,
 		// checkout: checkoutReducer,
 		// admin: adminReducer,
 	})
