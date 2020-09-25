@@ -8,6 +8,7 @@ import AddressForm from "../AddressForm/AddressForm";
 class App extends Component {
 	state = {
 		pizzaList: [],
+		currentCart: [],
 	};
 	componentDidMount() {
 		this.getPizzas();
@@ -34,6 +35,10 @@ class App extends Component {
 				console.log(err);
 			});
 	};
+	addMe = () => {
+		console.log("you added this pizza", this.state.pizza);
+	};
+
 	render() {
 		return (
 			<Router>
@@ -50,11 +55,14 @@ class App extends Component {
 										{pizza.name}
 										{pizza.description}
 										{pizza.price}
-										<button>Add Me</button>
+										<button type='submit' onClick={this.addMe}>
+											Add Me
+										</button>
 									</li>
 								</div>
 							))}
 						</ul>
+
 						<img src='images/pizza_photo.png' />
 					</Route>
 
@@ -71,4 +79,8 @@ class App extends Component {
 	}
 }
 
-export default connect()(App);
+const mapStateToProps = (reduxStore) => ({
+	reduxStore,
+});
+
+export default connect(mapStateToProps)(App);
