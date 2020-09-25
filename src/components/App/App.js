@@ -10,6 +10,7 @@ import Admin from '../Admin/Admin'
 class App extends Component {
 	state = {
 		pizzaList: [],
+		currentCart: [],
 	};
 	componentDidMount() {
 		this.getPizzas();
@@ -36,9 +37,18 @@ class App extends Component {
 				console.err(err);
 			});
 	};
+	addMe = (pizzaToAdd) => {
+		console.log("you added this pizza");
+		console.log(pizzaToAdd);
+		this.props.dispatch({
+			type: "SEND_PIZZAS",
+			payload: pizzaToAdd,
+		});
+	};
+
 	render() {
 		return (
-      		<Router>
+			<Router>
 				<div className='App'>
 					<header className='App-header'>
 						<h1 className='App-title'>Prime Pizza</h1>
@@ -52,14 +62,17 @@ class App extends Component {
 										{pizza.name}
 										{pizza.description}
 										{pizza.price}
-										<button>Add Me</button>
+										<button type='submit' onClick={() => this.addMe(pizza)}>
+											Add Me
+										</button>
 									</li>
 								</div>
 							))}
 						</ul>
+
 						<img src='images/pizza_photo.png' />
 					</Route>
-			
+
 					<Route path='/address-form' exact>
 						<AddressForm />
 					</Route>
@@ -77,4 +90,8 @@ class App extends Component {
 	}
 }
 
-export default connect()(App);
+const mapStateToProps = (reduxStore) => ({
+	reduxStore,
+});
+
+export default connect(mapStateToProps)(App);
