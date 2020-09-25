@@ -42,7 +42,7 @@ class App extends Component {
 						<h1 className='App-title'>Prime Pizza</h1>
 					</header>
 					<br />
-					<Route path='/'>
+					<Route path='/' exact>
 						<ul>
 							{this.state.pizzaList.map((pizza, index) => (
 								<div>
