@@ -12,10 +12,7 @@ class PizzaForm extends Component {
             city: '',
             zip: '',
             type: '',
-            pizzas: [{
-                id: '',
-                quantity: ''
-            }]
+            total: 30
         }
     }
 
