@@ -23,9 +23,11 @@ TODO:
             - [ ] PizzaItem
 
     Address (Page 2):
-        - [ ] Input field
-            - [ ] Name, Street Address, City, Zip
-            - [ ] Radio buttons for Delivery / Pickup
+        - [x] Input field
+            - [x] Name, Street Address, City, Zip
+            - [x] Radio buttons for Delivery / Pickup
+        - [ ] POST to database
+            - [ ] Dispatch as well?
 
     Checkout (Page 3):
         - [ ] Display all pizzas

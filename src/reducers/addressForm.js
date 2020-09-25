@@ -5,12 +5,7 @@ const initialAddress = {
     zip: "",
     total: "",
     type: "",
-    pizzas: [
-        {
-            id: "",
-            quantity: ""
-        }
-    ]
+    total: ""
 }
 
 const addressFormReducer = (state = initialAddress, action) => {
