@@ -29,5 +29,5 @@ TODO:
 
     Checkout (Page 3):
         - [ ] Display all pizzas
-            - [ ] GET
+            - [X] GET
             - [ ] render of all pizzas
