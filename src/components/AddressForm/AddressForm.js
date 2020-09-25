@@ -11,7 +11,11 @@ class PizzaForm extends Component {
             streetAddress: '',
             city: '',
             zip: '',
-            type: ''
+            type: '',
+            pizzas: [{
+                id: '',
+                quantity: ''
+            }]
         }
     }
 
