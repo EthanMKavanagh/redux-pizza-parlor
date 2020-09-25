@@ -35,8 +35,13 @@ class App extends Component {
 				console.log(err);
 			});
 	};
-	addMe = () => {
-		console.log("you added this pizza", this.state.pizza);
+	addMe = (pizzaToAdd) => {
+		console.log("you added this pizza");
+		console.log(pizzaToAdd);
+		this.props.dispatch({
+			type: "SEND_PIZZAS",
+			payload: pizzaToAdd,
+		});
 	};
 
 	render() {
@@ -55,7 +60,7 @@ class App extends Component {
 										{pizza.name}
 										{pizza.description}
 										{pizza.price}
-										<button type='submit' onClick={this.addMe}>
+										<button type='submit' onClick={() => this.addMe(pizza)}>
 											Add Me
 										</button>
 									</li>
